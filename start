@@ -1,0 +1,9 @@
+#!/bin/bash
+docker run --rm -it \
+    -e PULSE_SERVER=unix:/run/user/1000/pulse/native \
+    -e DISPLAY=unix:0.0 \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /run/user/1000/pulse:/run/user/1000/pulse \
+    --mount source=parsec_home,target=/home/parsec \
+    --device=/dev/dri:/dev/dri \
+    "$1"
